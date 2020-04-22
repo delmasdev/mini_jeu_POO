@@ -21,7 +21,7 @@ enemies_array << player1
 player2 = Player.new("José")
 enemies_array << player2
 
-while user.life_point > 0 && (player1.life_point > 0 || player2.life_point > 0)
+while user.life_points > 0 && (player1.life_points > 0 || player2.life_points > 0)
   puts user.show_state
   gets.chomp
   puts " "
@@ -53,13 +53,13 @@ while user.life_point > 0 && (player1.life_point > 0 || player2.life_point > 0)
   elsif action == "s"
     user.search_health_pack
   elsif action == "0" 
-    if player1.life_point > 0
+    if player1.life_points > 0
       user.attacks(player1)
     else
       puts "Ce joueur est déjà mort. Vous avez perdu un tour d'attaque."
     end
   elsif action == "1"
-    if player2.life_point > 0
+    if player2.life_points > 0
       user.attacks(player2)
       else
       puts "Ce joueur est déjà mort. Vous avez perdu un tour d'attaque."
@@ -69,13 +69,13 @@ while user.life_point > 0 && (player1.life_point > 0 || player2.life_point > 0)
 
   gets.chomp
 
-  if player1.life_point != 0 || player2.life_point != 0
+  if player1.life_points != 0 || player2.life_points != 0
     puts "Les autres joueurs attaquent!!"
     gets.chomp
     puts " "
 
     enemies_array.each do |enemie|
-      if enemie.life_point > 0
+      if enemie.life_points > 0
         enemie.attacks(user)
         gets.chomp
         puts "\n"
@@ -90,7 +90,7 @@ while user.life_point > 0 && (player1.life_point > 0 || player2.life_point > 0)
 
 end
 
-if user.life_point > 0 && enemies_array.each {|enemie|enemie.life_point = 0}
+if user.life_points > 0 && enemies_array.each {|enemie|enemie.life_points = 0}
   puts "BRAVO! TU AS GAGNE!"
 else
   puts "Loser! Tu as perdu!"
